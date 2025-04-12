@@ -1,0 +1,11 @@
+{
+  "name": "@flashmind/api",
+  "module": "index.ts",
+  "type": "module",
+  "scripts": {
+    "dev": "bun --watch run index.ts"
+  },
+  "dependencies": {
+    "hono": "^4.7.6"
+  }
+}
