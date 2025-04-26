@@ -3,7 +3,7 @@ import { Common } from '../shared/common';
 import { Examples } from "../examples";
 import { Drizzle } from "../shared/drizzle";
 import { deckTable } from "./deck.sql";
-import { eq } from "drizzle-orm";
+import { and, eq } from "drizzle-orm";
 import { fn } from "../shared/fn";
 import { createID } from "../shared/id";
 
@@ -54,18 +54,24 @@ export namespace Deck {
     }
 
     export const create = fn(InfoSchema.partial({ id: true }), async (data) => {
-        const id = data.id || createID("deck")
+        const id = data.id || createID("deck");
         await Drizzle.db.insert(deckTable).values({ ...data, id });
         return id;
     })
 
     export const update = fn(InfoSchema, async (data) => {
-        await Drizzle.db.update(deckTable).set({ ...data, timeUpdated: new Date() });
+        await Drizzle.db.update(deckTable).set({ ...data, timeUpdated: new Date() })
+            .where(eq(deckTable.id, data.id));
         return data.id;
     });
 
     export const getDetail = fn(InfoSchema.pick({ id: true }), async ({ id }) => {
-        const select = await Drizzle.db.select().from(deckTable).where(eq(deckTable.id, id))
+        const select = await Drizzle.db.select().from(deckTable).where(
+            and(
+                eq(deckTable.id, id),
+                eq(deckTable.isActive, true)
+            )
+        )
         return select.map(serialize).at(0)
     });
 

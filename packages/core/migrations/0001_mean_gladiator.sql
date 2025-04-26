@@ -1,0 +1,1 @@
+ALTER TABLE "deck" ALTER COLUMN "image" SET DATA TYPE varchar(612);

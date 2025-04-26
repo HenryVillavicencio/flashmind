@@ -99,9 +99,18 @@ deckRoute
         }),
         validator("param", Deck.InfoSchema.pick({ id: true })),
         async (c) => {
-            const id = c.req.valid("param").id
-            const deck = await Deck.getDetail({ id })
-            return c.json({ data: deck }, 200)
+            const id = c.req.valid("param").id;
+            const deck = await Deck.getDetail({ id });
+
+            if (!deck) {
+                return c.json({
+                    type: "not_found",
+                    code: "resource_not_found",
+                    message: "The requested resource could not be found",
+                }, 404);
+            }
+
+            return c.json({ data: deck }, 200);
         })
     .put("/:id",
         describeRoute({

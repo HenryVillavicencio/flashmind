@@ -8,9 +8,9 @@
   "dependencies": {
     "@neondatabase/serverless": "^1.0.0",
     "drizzle-orm": "^0.43.1",
+    "pg": "^8.15.6",
     "ulid": "^3.0.0",
-    "zod": "^3.24.2",
-    "pg": "^8.15.6"
+    "zod": "^3.24.2"
   },
   "devDependencies": {
     "drizzle-kit": "^0.31.0"

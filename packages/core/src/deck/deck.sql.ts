@@ -7,5 +7,5 @@ export const deckTable = pgTable("deck", {
   ...Drizzle.isActive,
   name: varchar("name", { length: 100 }).notNull(),
   description: text("description").notNull(),
-  image: varchar("image", { length: 512 }),
+  image: varchar("image", { length: 612 }),
 });
