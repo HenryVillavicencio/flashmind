@@ -2,7 +2,7 @@
   "name": "flashmind",
   "module": "index.ts",
   "type": "module",
-  "workspaces":[
+  "workspaces": [
     "apps/*",
     "packages/*"
   ],
@@ -11,5 +11,7 @@
   },
   "peerDependencies": {
     "typescript": "^5.0.0"
+  },
+  "dependencies": {
   }
 }

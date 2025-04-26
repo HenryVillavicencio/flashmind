@@ -6,6 +6,12 @@
     "dev": "bun --watch run index.ts"
   },
   "dependencies": {
-    "hono": "^4.7.6"
+    "@hono/zod-validator": "^0.4.3",
+    "@scalar/hono-api-reference": "^0.8.1",
+    "hono": "^4.7.6",
+    "hono-openapi": "^0.4.6",
+    "zod": "^3.24.2",
+    "zod-openapi": "^4.2.4",
+    "@flashmind/core": "workspace:*"
   }
 }
