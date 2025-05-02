@@ -21,7 +21,7 @@ app
                     description: 'Greeting API',
                 },
                 servers: [
-                    { url: 'http://localhost:3000', description: 'Local Server' },
+                    { url: 'http://localhost:3001', description: 'Local Server' },
                 ],
             },
         })
@@ -59,4 +59,7 @@ app
         );
     });
 
-export default app
+export default {
+    port: 3001,
+    fetch: app.fetch,
+} 

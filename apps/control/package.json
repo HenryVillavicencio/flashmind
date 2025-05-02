@@ -1,0 +1,14 @@
+{
+  "name": "@flashmind/control",
+  "module": "index.ts",
+  "type": "module",
+  "scripts": {
+    "dev": "bun --watch run index.ts"
+  },
+  "dependencies": {
+    "@ai-sdk/google": "^1.2.14",
+    "hono": "^4.7.6",
+    "opencontrol": "^0.1.0",
+    "zod": "^3.24.2"
+  }
+}
