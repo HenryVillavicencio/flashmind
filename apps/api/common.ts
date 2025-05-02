@@ -1,7 +1,9 @@
-import { z } from "zod";
+import { z, ZodSchema } from "zod";
 import { resolver } from "hono-openapi/zod";
 import { ErrorResponse, ErrorCodes } from "./error";
 import { validator as zodValidator } from "hono-openapi/zod";
+import type { ValidationTargets } from "hono";
+
 
 export function Result<T extends z.ZodTypeAny>(schema: T) {
   return resolver(
@@ -15,9 +17,9 @@ export function Result<T extends z.ZodTypeAny>(schema: T) {
  * Custom validator wrapper around hono-openapi/zod validator that formats errors
  * according to our standard API error format
  */
-export const validator = function (
-  target: Parameters<typeof zodValidator>[0],
-  schema: Parameters<typeof zodValidator>[1],
+export const validator = function<T extends ZodSchema, Target extends keyof ValidationTargets> (
+  target: Target,
+  schema: T
 ) {
   // Create a custom error handler that formats errors according to our standards
   const standardErrorHandler: Parameters<typeof zodValidator>[2] = (
