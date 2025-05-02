@@ -6,6 +6,7 @@
     "dev": "bun --watch run index.ts"
   },
   "dependencies": {
+    "@ai-sdk/google": "^1.2.14",
     "@neondatabase/serverless": "^1.0.0",
     "drizzle-orm": "^0.43.1",
     "pg": "^8.15.6",

@@ -5,12 +5,14 @@ import { Scalar } from '@scalar/hono-api-reference';
 import { HTTPException } from 'hono/http-exception';
 import { ErrorCodes } from './error';
 import { flashcardRoute } from './flashcardRoute';
+import { iaRoute } from './iaRoute';
 
 const app = new Hono();
 
 app
     .route("/api/decks", deckRoute)
     .route("/api/flashcards", flashcardRoute)
+    .route("/api/ia", iaRoute)
     .get(
         '/openapi',
         openAPISpecs(app, {
